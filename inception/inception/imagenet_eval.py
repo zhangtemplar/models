@@ -27,7 +27,8 @@ from __future__ import print_function
 
 import tensorflow as tf
 
-from inception import inception_eval
+# from inception import inception_eval as eval
+from inception import alexnet_eval as eval
 from inception.imagenet_data import ImagenetData
 
 FLAGS = tf.app.flags.FLAGS
@@ -39,7 +40,7 @@ def main(unused_argv=None):
   if tf.gfile.Exists(FLAGS.eval_dir):
     tf.gfile.DeleteRecursively(FLAGS.eval_dir)
   tf.gfile.MakeDirs(FLAGS.eval_dir)
-  inception_eval.evaluate(dataset)
+  eval.evaluate(dataset)
 
 
 if __name__ == '__main__':

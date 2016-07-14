@@ -22,7 +22,8 @@ from __future__ import print_function
 
 import tensorflow as tf
 
-from inception import inception_train
+# from inception import inception_train as train
+from inception import alexnet_train as train
 from inception.imagenet_data import ImagenetData
 
 FLAGS = tf.app.flags.FLAGS
@@ -34,7 +35,7 @@ def main(_):
   if tf.gfile.Exists(FLAGS.train_dir):
     tf.gfile.DeleteRecursively(FLAGS.train_dir)
   tf.gfile.MakeDirs(FLAGS.train_dir)
-  inception_train.train(dataset)
+  train.train(dataset)
 
 
 if __name__ == '__main__':

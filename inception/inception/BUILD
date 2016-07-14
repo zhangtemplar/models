@@ -58,6 +58,18 @@ py_library(
     ],
 )
 
+py_library(
+    name = "alexnet",
+    srcs = [
+        "alexnet_model.py",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        ":dataset",
+        "//inception/slim",
+    ],
+)
+
 py_binary(
     name = "imagenet_eval",
     srcs = [
@@ -66,6 +78,7 @@ py_binary(
     deps = [
         ":imagenet_data",
         ":inception_eval",
+        ":alexnet_eval",
     ],
 )
 
@@ -91,6 +104,17 @@ py_library(
     ],
 )
 
+py_library(
+    name = "alexnet_eval",
+    srcs = [
+        "alexnet_eval.py",
+    ],
+    deps = [
+        ":image_processing",
+        ":alexnet",
+    ],
+)
+
 py_binary(
     name = "imagenet_train",
     srcs = [
@@ -99,6 +123,7 @@ py_binary(
     deps = [
         ":imagenet_data",
         ":inception_train",
+        ":alexnet_train",
     ],
 )
 
@@ -135,6 +160,16 @@ py_library(
     ],
 )
 
+py_library(
+    name = "alexnet_train",
+    srcs = [
+        "alexnet_train.py",
+    ],
+    deps = [
+        ":image_processing",
+        ":alexnet",
+    ],
+)
 py_library(
     name = "inception_distributed_train",
     srcs = [

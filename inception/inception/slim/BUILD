@@ -74,7 +74,16 @@ py_test(
 
 py_library(
     name = "inception",
-    srcs = ["inception_model.py"],
+    srcs = ["inception_model.py","alexnet_model.py"],
+    deps = [
+        ":ops",
+        ":scopes",
+    ],
+)
+
+py_library(
+    name = "alexnet",
+    srcs = ["alexnet_model.py"],
     deps = [
         ":ops",
         ":scopes",
